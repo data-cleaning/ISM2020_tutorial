@@ -1,4 +1,4 @@
-# tutorial_ism2020
+# Data Cleaning for Official Statistics
 
 
 Material for the _Data Cleaning for Official Statistics_ workshop
