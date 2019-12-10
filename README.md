@@ -1,9 +1,9 @@
 # Data Cleaning for Official Statistics
 
 
-Material for the _Data Cleaning for Official Statistics_ workshop
-at the [Instutute for Statistical Mathematics](https://www.ism.ac.jp/index_e.html) in Tokyo (JP), February 29, 2020.
+Material for the workshop at the [Instutute for Statistical Mathematics](https://www.ism.ac.jp/index_e.html) in Tokyo (JP), February 29, 2020.
 
+Lecturers: Mark van der Loo and Edwin de Jonge
 
 ### Time table 
 
