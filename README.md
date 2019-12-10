@@ -2,7 +2,7 @@
 
 
 Material for the _Data Cleaning for Official Statistics_ workshop
-at the [Instutute for Statistical Mathematics](https://www.ism.ac.jp/index_e.html) in Tokyo (JP), February 29, 2020).
+at the [Instutute for Statistical Mathematics](https://www.ism.ac.jp/index_e.html) in Tokyo (JP), February 29, 2020.
 
 
 ### Time table 
