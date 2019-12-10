@@ -14,6 +14,7 @@ at the [Instutute for Statistical Mathematics](https://www.ism.ac.jp/index_e.htm
 |13:45 - 14:45 | Hands-on lecture (1)  |
 |14:45 - 15:00 | Break                 |
 |15:00 - 16:00 | Hands-on lecture (2)  |
+|16:00 - 16:15 | Break                 |
 |16:15 - 17:15 | Hands-on lecture (3)  |
 |17:15 - 17:30 | Discussion and closing| 
 
