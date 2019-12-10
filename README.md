@@ -8,7 +8,8 @@ at the [Instutute for Statistical Mathematics](https://www.ism.ac.jp/index_e.htm
 ### Time table 
 
 
-
+|Time slot     | Topic                 |
+|--------------|-----------------------|
 |13:30 - 13:45 | Opening               |
 |13:45 - 14:45 | Hands-on lecture (1)  |
 |14:45 - 15:00 | Break                 |
