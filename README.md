@@ -1,46 +1,32 @@
-# EESW2019_tutorial
+# ISM tutorial
 
 <a href="https://www.amazon.com/Statistical-Data-Cleaning-Applications-R/dp/1118897153"><img align="right" src="src/00tex/sdcr.jpg" width=200></a>
 
-Materials for the short course on Statistical Data Cleaning for Business
-Statistics at the 
-[European Establishment Statistics Workshop 2019](https://statswiki.unece.org/display/ENBES/EESW19)
+
+Material for the workshop at the [Instutute for Statistical Mathematics](https://www.ism.ac.jp/index_e.html) in Tokyo (JP), February 29, 2020.
+
+Lecturers: Mark van der Loo and Edwin de Jonge
+
+### Time table 
 
 
-----
-
-### Contents 
-
-Slot 1 
-
-|Topic                 | time (m)  |
-|----------------------|-----------|
-|Introduction          | 20        |
-|Reading dirty data    | 30        |
-|Approximate matching  | 50        |
-|Data validation       | 50        |
+|Time slot     | Topic                 |
+|--------------|-----------------------|
+|13:30 - 13:45 | Opening               |
+|13:45 - 14:45 | Hands-on lecture (1)  |
+|14:45 - 15:00 | Break                 |
+|15:00 - 16:00 | Hands-on lecture (2)  |
+|16:00 - 16:15 | Break                 |
+|16:15 - 17:15 | Hands-on lecture (3)  |
+|17:15 - 17:30 | Discussion and closing| 
 
 
-Slot 2 
-
-
-|Topic                 | time (m)  |
-|----------------------|-----------|
-| Error localization   | 20        |
-| Imputation           | 50        |
-| Adjusting            | 20        |
-| Monitoring           | 30        |
-| Wrap-up              | 10        |
-
-### Course form
 
 The course form is highly hands-on. Each topic starts with an approximately
-10-15 minute session where you run and adapt some R code. Next, I will provide
+10-15 minute session where you run and adapt some R code. Next, we will provide
 background and details on what you just did. After that there is a more
 in-depth assignment. Depending on time and topic we will discuss the topic more
 in-depth after that.
-
-
 
 
 ### Prerequisites
@@ -52,7 +38,7 @@ Participants are expected to have a basic knowledge of R/RStudio, explicitly:
 - Work with the R command line and R scripts
 - Read/write CSV data
 - Some basic data manipulations and plots
-- I highly recommend working with RStudio projects.
+- We highly recommend working with RStudio projects.
 
 ### Software needed for the course
 
