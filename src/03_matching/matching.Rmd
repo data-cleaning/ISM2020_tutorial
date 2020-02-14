@@ -1,0 +1,276 @@
+---
+title: "Approximate Matching"
+author: "Mark van der Loo and Edwin de Jonge"
+date: "Tokyo | Institute of Statistical Mathemathics | 2020"
+output: 
+  beamer_presentation:
+    include:
+      in_header: ../00tex/presheader.tex
+classoption: "aspectratio=169"
+---
+
+## Try the code together with your neighbour
+
+\centering\huge
+`02input/raw_to_input.R`
+
+
+## String distance
+
+### Default (Optimal String Alignment distance)
+
+Count number of character deletions, insersions, substitutions and 
+transpositions (of adjacent characters)
+```{r}
+library(stringdist)
+stringdist("Ross Ihaka", "Robert Gentleman")
+```
+
+
+## Exact Matching with `match`
+
+```{r}
+lookup <- c("Alice","Bob","Carol","Danny")
+raw    <- c("Bob","Carl","Rob","bob","Dan","Alice")
+i <- match(raw, lookup)
+data.frame(raw=raw, matched=lookup[i])
+```
+
+## Approximate Matching with `stringdist::amatch`
+
+```{r}
+library(stringdist)
+j <- amatch(raw, lookup, maxDist=2)
+data.frame(raw=raw, matched=lookup[i], amatched=lookup[j])
+```
+
+$\to$ Match with closest match, and distance $\leq 2$.
+
+## Optimal string alignment?
+
+```{r}
+stringdist("Robert Gentleman", "Gentleman, Robert")
+stringdist("Robert Gentleman", "Ross Ihaka")
+```
+
+$\to$ OSA wil give a false match (if we allow `maxDist` of 12)
+
+
+## Alternative: cosine distance 
+
+```{r}
+stringdist("Robert Gentleman","Gentleman, Robert"
+            , method="cosine", q=2)
+stringdist("Robert Gentleman","Ross Ihaka"
+            , method="cosine", q=2)
+```
+
+### Notes
+- Based on counting co-occurrence of character $q$-grams (here: pairs).
+- Always between 0 and 1
+
+
+
+## More on `amatch`
+
+```{r, eval=FALSE}
+amatch(x, table, method, maxDist,...)
+```
+
+\begin{tabular}{ll}
+\texttt{x}      & character data to be matched\\
+\texttt{table}  & the lookup table with clean values\\
+\texttt{method} & string distance type\\
+\texttt{maxDist}& Maximum distance allowed (depends on \texttt{"method"}!)\\
+\texttt{...}    & Extra options depending on \texttt{"method"}
+\end{tabular}
+
+### Example
+
+```{r,eval=FALSE}
+amatch(raw, lookup, method="cosine", maxDist=0.5, q=3)
+```
+
+
+
+## Assignment
+
+Merge data from the `companies` dataset with data from `backbone.csv`.
+
+- Using approximate matching on the `"name"` and `"company"` column.
+- Think about and try different distance functions and `maxDist`
+- Keep your best solution
+- Remove rows that cannot be matched
+- Write to `02input/myinput.csv`
+
+
+# More on String distances
+
+## More on string distances
+
+### Main idea
+
+Define a sence of _distance_ between two text strings
+
+### Distance
+
+A function $d(s,t)$ that takes two arguments and
+
+- returns a nonnegative number,
+- returns zero if and only if $s=t$
+- is symmetric: $d(s,t)=d(t,s)$
+- is the length of a shortest path between $s$ and $t$: $d(s,t)\leq d(s,u)+d(u,t)$
+
+### Note
+
+Some string distances violate one or more of the above assumptions.
+
+
+## Distance types
+
+- Edit based
+- $q$-gram based
+- Heuristic
+
+
+## Edit-based string distances
+
+### Idea
+
+1. Choose basic steps to alter a string
+2. Find the smallest nr of steps that changes $s$ into $t$
+3. The distance equals the nr of steps needed.
+
+### Basic steps
+
+- deletion: hihi $\to$ hii
+- insertion: hihi $\to$ hihih
+- substitution: hihi $\to$ hiha
+- transposition: hihi $\to$ ihhi
+
+
+## Edit-based string distances
+
+\begin{center}
+
+  \begin{tabular}{p{2cm}cccc}
+      &\multicolumn{4}{c}{\textbf{Allowed operation}}\\
+      \textbf{Distance}  & substitution & deletion & insertion & transposition\\
+      Hamming            & \yep{}   & \nope{} & \nope{} &\nope{} \\
+      LCS                & \nope{}  & \yep{}  & \yep{}  &\nope{} \\
+      Levenshtein        & \yep{}   & \yep{}  & \yep{}  &\nope{} \\
+      OSA                & \yep{}   & \yep{}  & \yep{}  &\yep{}$^*$ \\
+      Damerau-Levenshtein& \yep{}   & \yep{}  & \yep{}  &\yep{}\\
+    \end{tabular}\\
+  $^*$Substrings may be edited only once.
+\end{center}
+
+## Example
+
+### Levenshtein distance
+
+$$
+leia\xrightarrow[+1]{\textrm{sub}}lela\xrightarrow[+1]{\textrm{ins}}leela
+$$
+
+### Longest common subsequence distance
+
+$$
+leia
+\xrightarrow[+1]{\textrm{del}}lea
+\xrightarrow[+1]{\textrm{ins}}leea
+\xrightarrow[+1]{\textrm{ins}}leela
+$$
+
+
+## $q$-gram based distances (I)
+
+### Algorithm
+
+ - Tabulate substrings of length $q$ ($=$ $q$-gram profile)
+ - Compute a distance between the profiles
+
+### Example
+
+2-gram profile of banana
+
+\begin{tabular}{ccc}
+ba&an&na\\
+1 & 1& 2 
+\end{tabular}
+
+## $q$-gram based distances (II)
+
+### $q$-gram distance
+
+Manhattan distance between $q$-gram profiles
+$$
+\sum_{\sf{qgram}} |n_{\textsf{qgram}}(s) -n_{\textsf{qgram}}(t)|
+$$
+
+### Cosine-distance
+
+1 minus the cosine of the angle between the profiles
+
+$$
+1 - \frac{\mathbf{n}(s)\cdot\mathbf{n}(t)}
+{\|\mathbf{n}(s)\|\|\mathbf{n}(t)\|}
+$$
+
+### Note
+
+ - Does not satisfy the 'identity' demand.
+ - Often one chooses $q=2$ of $q=3$ 
+
+
+## Jaro-Winkler distance
+
+### Jaro distance
+$$
+d_j(s,t)=1-\frac{1}{3}\left(\frac{m}{|s|} + \frac{m}{|t|} + \frac{m + T}{m}\right)
+$$
+
+- $m$ number of matching characters (within a window)
+- $T$ number of matches that need swapping
+- $|s|,|t|$ number of characters in $s$, $t$.
+
+### Jaro-Winkler distance
+$$
+d_{jw}(s,t) = [1-p\ell(s,t)]d_j(s,t)
+$$
+
+- $\ell(s,t)$ length of longest equal prefix (up to 4 characters)
+- $p$ a number between $0$ and $0.25$ (usually $0.1$)
+
+## Soundex
+
+### Algorithm
+
+- Strings are appointed a code: same code means 'sounds the same'
+- Equal codes: distance zero, otherwise 1
+
+### Example
+
+- Farnsworth $\to$ H652
+- Fnarswort $\to$  H562
+
+### Note
+
+- Based on English pronunciation
+- Many extensions exist (see the `phonics` R package)
+
+
+## Which one to use?
+
+### Considerations
+
+- Fixed versus variable structure/length
+- Why would strings differ? (typos, speech, deliberate changes)
+- Performance
+
+
+
+
+
+
+

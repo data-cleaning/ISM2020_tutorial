@@ -1,0 +1,166 @@
+---
+title: "Statistical Data Cleaning"
+author: "Mark van der Loo and Edwin de Jonge"
+date: "Tokyo | Institute of Statistical Mathemathics | 2020"
+output: 
+  beamer_presentation:
+    include:
+      in_header: ../00tex/presheader.tex
+classoption: "aspectratio=169"
+---
+
+## Materials: `github.com/data-cleaning/ISM2020_tutorial`
+
+Clone (DOS or bash shell):
+```{bash, eval=FALSE}
+git clone https://github.com/data-cleaning/ISM2020_tutorial
+```
+Or download:
+\begin{picture}(0,0)
+\put(200,-75){\includegraphics[height=35mm]{fig/github.png}}
+\end{picture}
+
+
+## This tutorial
+
+
+### Topics
+
+First two steps of the the Statistical Value chain
+
+### Form
+
+1. You start with hands-on scripts
+2. Presentation: background
+3. Extra assignment (if there is time)
+
+
+# The Statistical Value Chain
+
+## Value Chains
+
+### Porter's value chain (1985)
+
+_The idea of the value chain is based on the process view of organizations, the idea of seeing a manufacturing (or service) organization as a system, made up of subsystems each with inputs, transformation processes and outputs._
+
+
+## Data Cleaning and the Statistical Value Chain
+
+\begin{center}
+\includegraphics[]{fig/valuechain.pdf}
+\end{center}
+
+### Notes
+
+- This part only pertains to the data processing stage. Collection, design,
+dissemination is not included.
+- The fixed points are well-defined statistical products.
+
+
+## Stages in the SVC
+
+1. **Raw Data** is data as it arrives
+    - Can differ in quality/source: survey/admin/big data
+2. **Input data** satisfies technical demands:
+    - File type is known and can be read
+    - Variables are of correct type (number/date/text/categorical$...$)
+    - Records identified with statistical objects
+    - Variables identified with statistical properties
+
+
+## Stages in the SVC
+
+3. **Valid data** satisfies domain knowledge constraints
+    - Age cannot be negative
+    - Someone under 15 yrs old cannot have income from work
+    - mean economic growth/decline does not exceed 5\% in a certain sector
+    - $...$
+    
+### Justification
+
+Invalid data leads to invalid statistical results.
+
+
+## Stages in the SVC
+
+4. **Statistics** are the target output values (aggregates) describing the population
+characteristic of interest.
+    - Economic growth
+    - Unemployment
+    - Income distribution
+    - GDP
+    - $\ldots$
+
+### Note
+
+Statistics also need to satisfy domain knowledge constraints.
+
+
+## Stages in the SVC
+
+5. **Output** are statistics, formatted and annotated for publication
+    - Figures, tables
+    - Definitions
+    - $..$
+
+
+## The SVC: Remarks
+
+- Actual data processing is not necessarily linear across the chain
+- In production architectures a more flexible model is often used where
+the definition of interfaces between processing steps play a crucial role.
+The chain shown here is a general example covering most steps in some way.
+- The general idea scales really well.
+
+
+
+## Quizz (1)
+
+\begin{center}
+\includegraphics[height=2.5cm]{fig/valuechain.pdf}
+\end{center}
+
+### Where does the following activity take place?
+
+Formatting date-time variable to `ISO8106` format.
+
+## Quizz (2)
+
+\begin{center}
+\includegraphics[height=2.5cm]{fig/valuechain.pdf}
+\end{center}
+
+### Where does the following activity take place?
+
+Estimating the covariance between unemployment percentage and age. 
+
+
+
+## Quizz (3)
+
+\begin{center}
+\includegraphics[height=2.5cm]{fig/valuechain.pdf}
+\end{center}
+
+### Where does the following activity take place?
+
+Join data with a backbone using standard (SQL) join operations,
+based on unique keys.
+
+
+## Quizz (4)
+
+\begin{center}
+\includegraphics[height=2.5cm]{fig/valuechain.pdf}
+\end{center}
+
+### Where does the following activity take place?
+
+Join data with a backbone using probabilistic 
+linkage, based on approximate matches between various
+columns of the data and the backbone.
+
+
+
+
+
