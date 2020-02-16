@@ -66,7 +66,8 @@ Some text variables are structured, but contain variations:
 - phone numbers: "+811234567890" vs "01-2345-6789" vs "012-345-6789" vs "0123-45-6789"
 - soc. sec. numbers: "1234 5678 9012" vs "123456789012"
 - bank account numbers, etc.
-- zip codes: "〒100-8994" vs "100-8994" vs "〒100 - 8994".
+- zip codes: "〒100-8994" vs "100-8994" vs "〒100 - 8994", Dutch zip-codes:
+"1234AB" vs "1234 AB" vs "1234 ab".
 
 ### Cleaning action
 

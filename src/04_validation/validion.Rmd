@@ -24,7 +24,8 @@ companies <- read.csv("../../02input/input.csv")
 
 ## Data validation
 
-Verify that data satisfy technical restrictions and does not contradict
+
+> Verify that data satisfy technical restrictions and does not contradict
 expert knowledge.
 
 
@@ -33,7 +34,7 @@ expert knowledge.
 - Number of records must equal 60
 - Financial variables are numeric
 - Records have a unique `id`
-- Zipcode consists of 4 numbers followed by 2 letters 
+- Zipcode consists of 3 numbers followed by "-" and 4 numbers. 
 
 ### Examples of domain knowledge demands
 

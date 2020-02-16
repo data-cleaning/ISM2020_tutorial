@@ -78,7 +78,7 @@ dissemination is not included.
     
 ### Justification
 
-Invalid data leads to invalid statistical results.
+> Invalid data leads to invalid statistical results.
 
 
 ## Stages in the SVC
