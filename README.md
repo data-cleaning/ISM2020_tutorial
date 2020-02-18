@@ -3,7 +3,7 @@
 <a href="https://www.amazon.com/Statistical-Data-Cleaning-Applications-R/dp/1118897153"><img align="right" src="src/00tex/sdcr.jpg" width=200></a>
 
 
-Material for the workshop at the [Instutute for Statistical Mathematics](https://www.ism.ac.jp/index_e.html) in Tokyo (JP), February 29, 2020.
+Material for the workshop at the [Institute for Statistical Mathematics](https://www.ism.ac.jp/index_e.html) in Tokyo (JP), February 29, 2020.
 
 Lecturers: Mark van der Loo and Edwin de Jonge
 
@@ -61,6 +61,30 @@ install.packages(c(
       , "lumberjack")
   , dependencies=TRUE)
 ```
+
+### Course material
+
+#### For users who have `git` installed
+
+In `RStudio` go to `File` $\to$ `New Project...` $\to$ `Version Control` $\to$ `Git`,
+and enter the follwong URL into the `Repository URL` field:
+
+```
+https://github.com/data-cleaning/ISM2020_tutorial
+```
+
+Or, use your OS's command-line
+```{sh}
+git clone https://github.com/data-cleaning/ISM2020_tutorial
+```
+And then open the `ISM2020_tutorial.Rproj` file with RStudio.
+
+#### For users who do not have `git` installed
+
+At the top of this webpage click `Clone or Download` and then `Download Zip`.
+Unzip the file and open `ISM2020_tutorial.Rproj` with RStudio.
+
+
 
 ----
 ## License
